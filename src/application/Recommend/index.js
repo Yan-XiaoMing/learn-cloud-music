@@ -10,7 +10,7 @@ import Loading from '../../baseUI/loading/index'
 
 function Recommend(props) {
 
-    const {bannerList, recommendList} = props;
+    const {bannerList, recommendList, enterLoading} = props;
     const {getBannerDataDispatch, getRecommendListDataDispatch} = props;
 
     useEffect(() => {
@@ -20,8 +20,8 @@ function Recommend(props) {
         if(!recommendList.size){
             getRecommendListDataDispatch();
         }
-        // eslint-disable-next-line
     }, []);
+
 
     const bannerListJS = bannerList ? bannerList.toJS() : [];
     const recommendListJS = recommendList ? recommendList.toJS() :[];
@@ -35,14 +35,15 @@ function Recommend(props) {
                     <div>Recommend</div>
                 </div>
             </Scroll>
-            <Loading/>
+            {enterLoading ? <Loading/> : null}
         </Content>
     );
 }
 
 const mapStateToProps = (state) =>({
-    bannerList:state.getIn(['recommend','bannerList']),
-    recommendList:state.getIn(['recommend','recommendList'])
+    bannerList: state.getIn(['recommend', 'bannerList']),
+    recommendList: state.getIn(['recommend', 'recommendList']),
+    enterLoading: state.getIn(['recommend', 'enterLoading'])
 });
 
 const mapDispatchToProps = (dispatch) => {

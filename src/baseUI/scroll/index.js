@@ -19,11 +19,11 @@ const Scroll = forwardRef ((props, ref) => {
 
     useEffect (() => {
         const scroll = new BScroll (scrollContaninerRef.current, {
-            scrollX: direction === "horizental",
-            scrollY: direction === "vertical",
+            scrollX: direction === 'horizontal',
+            scrollY: direction === 'vertical',
             probeType: 3,
             click: click,
-            bounce:{
+            bounce: {
                 top: bounceTop,
                 bottom: bounceBottom
             }
