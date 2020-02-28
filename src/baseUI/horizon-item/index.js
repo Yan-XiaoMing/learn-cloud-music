@@ -12,6 +12,7 @@ function Horizon(props) {
 
     useEffect(() => {
         let categoryDOM = Category.current;
+
         let tagElems = categoryDOM.querySelectorAll('span');
         let totalWidth = 0;
         Array.from(tagElems).forEach(ele => {
